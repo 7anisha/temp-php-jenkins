@@ -16,7 +16,7 @@ if (!$conn){
 <?php
 class dbconnect{
 // private $host = '192.168.56.1'; // This is the hostname of the MySQL container (as defined in docker-compose.yml)
-private $host = '10.106.103.5'; // cluster ip of mysql-pod
+private $host = '10.101.63.172'; // cluster ip of mysql-pod
 private $dbname = 'sqldb'; // Replace with your actual database name
 private $user = 'root'; // MySQL root user
 private $pass = 'password'; // Replace with your MySQL root password
