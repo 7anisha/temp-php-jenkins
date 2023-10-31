@@ -45,8 +45,8 @@ pipeline {
                    // bat "kubectl wait --for=condition=ready pod/$mysqlPodName --timeout=300s"
                     //bat "kubectl wait --for=condition=ready pod/$phpAdminPodName --timeout=300s"
 
-                    bat "kubectl run php-app-pod --image=anishaaaaa/myphp3" 
-                    bat "kubectl expose pod php-app-pod  --type=NodePort --port=8088 --target-port=80 --name=php-app-svc" 
+                    // bat "kubectl run php-app-pod --image=anishaaaaa/myphp3" 
+                    // bat "kubectl expose pod php-app-pod  --type=NodePort --port=8088 --target-port=80 --name=php-app-svc" 
                     
                 }
             }
