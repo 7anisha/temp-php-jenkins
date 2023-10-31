@@ -36,10 +36,10 @@ pipeline {
 
 
                   
-                    bat "kubectl create cm phpadmin-config --from-literal=PMA_HOST=10.101.63.172"
-                    bat "kubectl create secret generic phpadmin-secret --from-literal=PMA_USER=root --from-literal=PMA_PASSWORD=password"
-                    bat "kubectl apply -f phpadmin.yaml"
-                    bat "kubectl expose pod phpadmin-pod  --type=NodePort --port=8081 --target-port=80 --name=phpadmin-svc2" 
+                    // bat "kubectl create cm phpadmin-config --from-literal=PMA_HOST=10.101.63.172"
+                    // bat "kubectl create secret generic phpadmin-secret --from-literal=PMA_USER=root --from-literal=PMA_PASSWORD=password"
+                    // bat "kubectl apply -f phpadmin.yaml"
+                    bat "kubectl expose pod phpadmin-pod  --type=NodePort --port=8081 --target-port=80 --name=phpadmin-svc" 
 
                     // Wait for the MySQL and PHPMyAdmin pods to be ready (you may need to adjust the timeouts)
                    // bat "kubectl wait --for=condition=ready pod/$mysqlPodName --timeout=300s"
