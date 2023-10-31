@@ -8,20 +8,20 @@ pipeline {
             }
         }
 
-        stage('Build and Push Docker Images') {
-            steps {
-                script {
-                    def dockerImageName = "anishaaaaa/myphp3:latest"
+        // stage('Build and Push Docker Images') {
+        //     steps {
+        //         script {
+        //             def dockerImageName = "anishaaaaa/myphp3:latest"
 
-                    // Build the Apache Docker image
-                    bat "docker build -t $dockerImageName -f Dockerfile ."
+        //             // Build the Apache Docker image
+        //             bat "docker build -t $dockerImageName -f Dockerfile ."
 
-                    // Push the Docker image to a container registry (e.g., Docker Hub)
-                    bat 'docker login -u anishaaaaa -p anisha12345'
-                    bat "docker push $dockerImageName"
-                }
-            }
-        }
+        //             // Push the Docker image to a container registry (e.g., Docker Hub)
+        //             bat 'docker login -u anishaaaaa -p anisha12345'
+        //             bat "docker push $dockerImageName"
+        //         }
+        //     }
+        // }
 
         stage('Deploy to Kubernetes') {
             steps {
