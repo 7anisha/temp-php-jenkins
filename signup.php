@@ -1,23 +1,42 @@
 <?php
 $showAlert = false;
 $showError = false;
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include 'dbconnect.php';
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $cpassword = $_POST["cpassword"];
-    $exists=false;
-    if(($password == $cpassword) && $exists==false){
-        $sql = "INSERT INTO `users` ( `username`, `password`, `date`) VALUES ('$username', '$password', current_timestamp())";
-        $result = mysqli_query($conn, $sql);
-        if ($result){
-            $showAlert = true;
-        }
-        header("location: login.php");
-    }
-    else{
-        $showError = "Passwords do not match";
-    }
+// if($_SERVER["REQUEST_METHOD"] == "POST"){
+//     include 'dbconnect.php';
+//     $username = $_POST["username"];
+//     $password = $_POST["password"];
+//     $cpassword = $_POST["cpassword"];
+//     $exists=false;
+//     if(($password == $cpassword) && $exists==false){
+//         $sql = "INSERT INTO `users` ( `username`, `password`, `date`) VALUES ('$username', '$password', current_timestamp())";
+//         $result = mysqli_query($conn, $sql);
+//         if ($result){
+//             $showAlert = true;
+//         }
+//         header("location: login.php");
+//     }
+//     else{
+//         $showError = "Passwords do not match";
+//     }
+// }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  include 'dbconnect.php';
+  $db = new dbconnect();
+  $conn = $db->connect();
+
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  $cpassword = $_POST['cpassword'];
+
+  if ($password === $cpassword) {
+      $stmt = $conn->prepare("INSERT INTO demo (username, password, cpassword) VALUES (?, ?, ?)");
+      $stmt->execute([$username, $password, $cpassword]);
+
+      echo "Data inserted successfully.";
+  } else {
+      echo "Passwords do not match.";
+  }
 }
     
 ?>
